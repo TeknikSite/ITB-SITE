@@ -1,0 +1,231 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portal Submit Tugas</title>
+    <link rel="stylesheet" href="style2.css">
+    <script src="supabase.js"></script>
+    <script src="supabase-config.js"></script>
+    <script src="script.js" defer></script>
+</head>
+<body>
+
+<header class="header">
+    <div class="header-content">
+        <h1>Ini Teknik Baik Site</h1>
+        <p>Data Tugas Siswa dan Data Kelompok</p>
+    </div>
+</header>
+
+<main class="container">
+
+    <!-- TABEL TUGAS SISWA -->
+    <section class="card">
+        <div class="section-heading">
+            <span class="section-label">ITB XI-3</span>
+            <h2>📘 Tabel Tugas </h2>
+        </div>
+
+        <div class="table-wrap">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Nomor</th>
+                        <th>Senin</th>
+                        <th>Selasa</th>
+                        <th>Rabu</th>
+                        <th>Kamis</th>
+                        <th>Jumat</th>
+                    </tr>
+                </thead>
+                <tbody id="studentTable"></tbody>
+            </table>
+        </div>
+
+        <div class="table-actions">
+            <button class="btn-add" id="addStudentBtn" type="button">
+                <span>＋</span> Tambahkan Tugas Siswa
+            </button>
+        </div>
+
+        <p class="hint">
+            Klik sel untuk menambah, melihat, atau mengedit tugas.
+        </p>
+    </section>
+
+    <!-- TABEL KELOMPOK -->
+    <section class="card">
+        <div class="section-heading">
+            <span class="section-label">ITB XI-3</span>
+            <h2>👥 Tabel Kelompok</h2>
+        </div>
+
+        <div class="table-wrap">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Nomor Kelompok</th>
+                        <th>Anggota kelompok 1</th>
+                        <th>Anggota kelompok 2</th>
+                        <th>Anggota kelompok 3</th>
+                        <th>Anggota kelompok 4</th>
+                        <th>Anggota kelompok 5</th>
+                    </tr>
+                </thead>
+                <tbody id="groupTable"></tbody>
+            </table>
+        </div>
+
+        <div class="table-actions">
+            <button class="btn-add" id="addGroupBtn" type="button">
+                <span>＋</span> Tambahkan Kelompok
+            </button>
+        </div>
+
+        <p class="hint">
+            Klik baris kelompok untuk mengedit atau menghapus data.
+            Perubahan memerlukan password verifikasi.
+        </p>
+    </section>
+
+</main>
+
+<footer>
+    <p>Portal Pengumpulan Tugas Siswa dan Data Kelompok</p>
+</footer>
+
+<!-- MODAL TUGAS SISWA -->
+<dialog id="taskDialog" class="task-dialog">
+    <div class="modal-header">
+        <div class="modal-icon">📝</div>
+        <div>
+            <h3 id="dialogTitle">Tambahkan Tugas</h3>
+            <p>Lengkapi informasi tugas di bawah ini.</p>
+        </div>
+        <button type="button" id="closeBtn" class="close-btn"
+            aria-label="Tutup">×</button>
+    </div>
+
+    <form id="taskForm">
+        <div class="form-group">
+            <label for="personNumber">Nomor tugas</label>
+            <select id="personNumber" required></select>
+        </div>
+
+        <div class="form-group">
+            <label for="taskDay">Hari</label>
+            <select id="taskDay" required>
+                <option value="">Pilih hari</option>
+                <option value="Senin">Senin</option>
+                <option value="Selasa">Selasa</option>
+                <option value="Rabu">Rabu</option>
+                <option value="Kamis">Kamis</option>
+                <option value="Jumat">Jumat</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="taskText">Isi Tugas</label>
+            <textarea id="taskText"
+                placeholder="Tuliskan detail tugas di sini..."
+                rows="4" required></textarea>
+        </div>
+
+        <div class="form-group">
+            <label for="password">Password Verifikasi</label>
+            <input type="password" id="password"
+                placeholder="Masukkan password verifikasi"
+                autocomplete="current-password" required>
+        </div>
+
+        <p id="error" class="error-message" role="alert"></p>
+
+        <div class="modal-actions">
+            <button type="button" id="cancelBtn" class="btn-secondary">
+                Batal
+            </button>
+            <button type="button" id="deleteBtn" class="btn-delete" hidden>
+                Hapus Tugas
+            </button>
+            <button type="submit" class="btn-primary" id="saveBtn">
+                Simpan Tugas
+            </button>
+        </div>
+    </form>
+</dialog>
+
+<!-- MODAL TAMBAH / EDIT KELOMPOK -->
+<dialog id="groupDialog" class="task-dialog">
+    <div class="modal-header">
+        <div class="modal-icon">👥</div>
+        <div>
+            <h3 id="groupDialogTitle">Tambahkan Kelompok</h3>
+            <p>Masukkan data lima anggota kelompok.</p>
+        </div>
+        <button type="button" id="closeGroupBtn" class="close-btn"
+            aria-label="Tutup">×</button>
+    </div>
+
+    <form id="groupForm">
+        <div class="form-group">
+            <label for="groupNumber">Nomor Kelompok</label>
+            <input type="text" id="groupNumber" readonly>
+        </div>
+
+        <div class="form-group">
+            <label for="member1">Anggota kelompok 1</label>
+            <input type="text" id="member1"
+                placeholder="Nama anggota pertama" required>
+        </div>
+
+        <div class="form-group">
+            <label for="member2">Anggota kelompok 2</label>
+            <input type="text" id="member2"
+                placeholder="Nama anggota kedua" required>
+        </div>
+
+        <div class="form-group">
+            <label for="member3">Anggota kelompok 3</label>
+            <input type="text" id="member3"
+                placeholder="Nama anggota ketiga" required>
+        </div>
+
+        <div class="form-group">
+            <label for="member4">Anggota kelompok 4</label>
+            <input type="text" id="member4"
+                placeholder="Nama anggota keempat" required>
+        </div>
+
+        <div class="form-group">
+            <label for="member5">Anggota kelompok 5</label>
+            <input type="text" id="member5"
+                placeholder="Nama anggota kelima" required>
+        </div>
+
+        <div class="form-group">
+            <label for="groupPassword">Password Verifikasi</label>
+            <input type="password" id="groupPassword"
+                placeholder="Masukkan password verifikasi"
+                autocomplete="current-password" required>
+        </div>
+
+        <p id="groupError" class="error-message" role="alert"></p>
+
+        <div class="modal-actions">
+            <button type="button" id="cancelGroupBtn"
+                class="btn-secondary">Batal</button>
+
+            <button type="button" id="deleteGroupBtn"
+                class="btn-delete" hidden>Hapus Kelompok</button>
+
+            <button type="submit" class="btn-primary">
+                Simpan Kelompok
+            </button>
+        </div>
+    </form>
+</dialog>
+
+</body>
+</html>

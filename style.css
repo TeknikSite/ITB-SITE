@@ -1,0 +1,557 @@
+ *,
+ html {
+    margin:0;
+    padding:0;   
+    scroll-behavior: smooth;
+}
+@font-face {
+    font-family: "montserrat";
+    src: url(aset/font/montserrat.black.ttf);
+ }
+ @font-face {
+    font-family: 'helvetica';
+    src: url(aset/font/Helvetica-Bold.woff);
+ }
+ @font-face {
+    font-family: 'epic';
+    src: url(aset/font/gc-epic-pro-demo.extra-bold.ttf);
+ }
+ @font-face {
+    font-family: 'acari';
+    src: url(aset/font/acari-sans.black.ttf);
+ }
+@keyframes appear{
+    from{
+        opacity: 0;
+        scale: 0.5;
+    }
+    to{
+       opacity: 1;
+       scale: 1;
+    }
+}
+body{
+    background-image: url(aset/gambar/bg.jpeg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    margin:0px;
+
+}
+
+
+.container-navbar {
+    background: linear-gradient(rgb(2, 195, 239),rgba(2, 8, 34));
+    height:10vh;
+    width:100%;
+}
+.nav-list {
+    display:flex;
+    height:10vh;
+    justify-content: center;
+    align-items: center;
+
+}
+.nav-item {
+    list-style-type: none;
+    padding: 10px;
+    margin:10px;
+    color:white;
+}
+.nav-item:hover {
+  background-color: #D9CFC7;
+  transition: .5s ease-in-out;
+  transition-delay: .3s;
+  border-radius: 8px;
+}
+.logo{
+    width: 60px;
+    height:60px;
+    object-fit: contain;
+}
+.a-navbar{
+    color:white;
+    text-decoration: none;
+}
+.container-content{
+    background-color: #EFE9E3;
+    height:80vh;
+}
+
+
+#home {
+    display: flex;
+    justify-content:space-evenly;
+    align-items: center;
+    min-height: 100vh;
+}
+.judul{
+    min-height:650px;
+    height: 200px;
+    width: 600px;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.button-more{
+    border-radius: 10px;
+    padding: 10px;
+    margin:10px;
+    width: 100px;
+    margin-top: 50px;
+    color:white;
+    transform: scale(1.5);
+    border: none;
+    border-radius: 12px;
+    position: relative;
+    background-color: #161a20;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+
+}
+.button-more::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    border-radius: 12px;
+
+    background: linear-gradient(
+        to bottom right,
+        rgb(0, 89, 173),
+        #fff
+    );
+
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.button-more:hover::before {
+    opacity: 1;
+}
+.a-more{
+    color:white;
+    text-decoration: none;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-shadow:
+        0 0 5px rgba(255, 255, 255, 0.8),
+        0 0 10px rgba(0, 150, 255, 0.8);
+}
+.gambar{
+    width: 700px;;
+    height: 750px;
+    object-fit:contain;
+    transform: scale(1.0);
+}
+#webname{
+    min-height:100;
+    height: 50px;
+    width: 500px;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'montserrat';
+    transform: scale(1.0);  text-shadow:
+        0 0 5px rgba(0, 150, 255, 0.8),
+        0 0 10px rgba(255, 255, 255, 0.8);
+    animation: appear 2s linear;
+}
+#lowwebname{
+    font-family: 'epic';
+    color: rgb(0, 89, 173);
+    transform:scale(1.6);
+    animation: appear 2s linear;
+    text-shadow:
+        0 0 5px rgba(255, 255, 255, 0.8),
+        0 0 10px rgba(0, 150, 255, 0.8);
+}
+
+
+#about{
+ min-height: 100vh;
+}
+.upperabout{
+    background-color: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 1rem;
+    width: 85vw;
+    margin: 40px auto;
+    padding: 40px;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 80px 20px 40px;
+}
+.penj1{
+    animation: appear 5s linear;
+    animation-timeline: view();
+    animation-range: entry 0;
+    margin-right:50px ;
+    font-family: 'montserrat', sans-serif;
+    text-decoration: none;
+}
+.gambar-madrasah{
+    animation: appear 5s linear;
+    animation-timeline: view();
+    animation-range: entry 0;
+    transform: scale(1.0);
+    min-height: 100px;
+    border-radius: 12px;
+}
+.gambar-fotbar{
+    animation: appear 5s linear;
+    animation-timeline: view();
+    animation-range: entry 0;
+    width: 500px;
+    height:500px;
+    min-height: 100px;
+    border-radius: 12px;
+}
+.about-link{
+    display: inline-block;
+    color: #00d2ff;
+    font-family: 'montserrat', sans-serif;
+    text-decoration: none;
+    font-weight: bold;
+    transition: 0.3s ease;
+}
+.lowerabout{
+    background-color: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 1rem;
+    width: 85vw;
+    margin: 40px auto;
+    padding: 40px;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 80px 20px 40px;
+}
+.penj2{
+    animation: appear 5s linear;
+    animation-timeline: view();
+    animation-range: entry 0;
+    margin-left:100px;
+    font-family: 'acari';
+    font-family: 'montserrat', sans-serif;
+    text-decoration: none;
+    font-weight: bold;
+}
+.struktur{
+    min-height:100vh;
+    padding: 30px 20px 60px;
+    box-sizing: border-box;
+}
+#struktur-judul{
+    margin-top: 20px;
+    margin-left: 40%;
+    animation: appear 5s linear;
+    animation-timeline: view();
+    animation-range: entry 0;
+    justify-content: center;
+    font-family: 'montserrat';
+    text-shadow:
+        0 0 5px rgba(255, 255, 255, 0.8),
+        0 0 10px rgba(0, 150, 255, 0.8);
+}
+#gambar-struktur {
+    display: block;
+    width: 70%;
+    max-width: 900px;
+    height: auto;
+    margin: 20px auto;
+}
+
+
+
+
+
+#schedule{
+ display: flex;
+ justify-content: center;
+ min-height: 1080;
+}
+.maintabel{
+    width:82vw;
+    height:110vh;
+    box-sizing: border-box;
+    background-color: #fff5;
+    backdrop-filter:blur(7px);
+    box-sizing: 0 .4rem .8rem #0005;
+    border-radius: .8rem;
+    gap: 30px;
+    margin-right: 50px;
+    margin-left: 20px;
+    margin-bottom: 100px;
+}
+#tabel-header{
+    width: 100%;
+    height: 10%;
+    background-color: #fff4;
+    padding: .8rem .1rem;
+}
+#judultabel{
+    font-family: 'montserrat';
+    text-shadow:
+        0 0 5px rgba(255, 255, 255, 0.8),
+        0 0 10px rgba(0, 150, 255, 0.8);
+}
+#tabel-jadwal{
+    width: 95%;
+    max-height: calc(89%-.8rem);
+    background-color: #fffb;
+
+    margin: .8rem auto;
+}
+#keterangan-jadwal{
+    font-family: 'acari';
+}
+table,th,td{
+    padding: 1rem;
+}
+
+
+
+
+
+.firstrow{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 100px;
+}
+.seccondrow{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 100px;
+}
+.thirdrow{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 100px;
+
+}
+.fourthrow{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 100px;
+
+}
+.fifthrow{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 100px;
+
+}
+.sixthrow{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 100px;
+
+}
+#judul-students{
+    font-family: 'montserrat';
+    margin-left:38%;
+    margin-bottom: 100px;
+    animation: appear 5s linear;
+    animation-timeline: view();
+    animation-range: entry 0;
+    text-shadow:
+        0 0 5px rgba(255, 255, 255, 0.8),
+        0 0 10px rgba(0, 150, 255, 0.8);
+}
+.student-card{
+    width: 315px;    
+    position: relative;
+    aspect-ratio: 1 / 1;
+    animation: appear 8s linear;
+    animation-timeline: view();
+    animation-range: entry 0;
+}
+#boxtem{
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+}
+#foto-siswa{
+    position: absolute;
+    width: 163px;
+    height: 163px;
+    object-fit: cover;
+
+    top: 5%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+#nama-siswa{
+    position: absolute;
+    top: 58%;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    color: white;
+    font-family: 'montserrat';
+    font-size: 18px;
+}
+#deskripsi-siswa{
+    position: absolute;
+    top: 67%;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    color: white;
+    font-size: 13px;
+}
+
+
+#classinfo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}.classinfojudul{
+    font-family: 'montserrat';
+    text-shadow:
+        0 0 5px rgba(255, 255, 255, 0.8),
+        0 0 10px rgba(0, 150, 255, 0.8);
+}
+.bag-kiri{
+    display: list-item;
+    justify-content: center;
+    align-items: center;
+    margin-right: 100px;
+}
+.but-tugas{
+    border-radius: 10px;
+    padding: 10px;
+    margin:10px;
+    width: 250px;
+    margin-top: 50px;
+    color:white;
+    transform: scale(1.5);
+    border: none;
+    border-radius: 12px;
+    position: relative;
+    background-color: #161a20;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+
+}
+.but-tugas::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    border-radius: 12px;
+
+    background: linear-gradient(
+        to bottom right,
+        rgb(0, 89, 173),
+        #fff
+    );
+
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.but-tugas:hover::before {
+    opacity: 1;
+}
+.a-but{
+    text-decoration: none;
+}
+.but-dokum{
+    border-radius: 10px;
+    padding: 10px;
+    margin:10px;
+    width: 250px;
+    margin-top: 50px;
+    color:white;
+    transform: scale(1.5);
+    border: none;
+    border-radius: 12px;
+    position: relative;
+    background-color: #161a20;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+
+}
+.but-dokum::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    border-radius: 12px;
+
+    background: linear-gradient(
+        to bottom right,
+        rgb(0, 89, 173),
+        #fff
+    );
+
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.but-dokum:hover::before {
+    opacity: 1;
+}
+.container-footer {
+    margin-top: 50px;
+    background-color: rgba(255, 255, 255, 0.15);
+    height:50vh;
+    display: flex;;
+    justify-content: center;
+    align-items: center;
+}
+
+.p-footer {
+    margin-left: 20px;
+    font-size: 15px;
+    margin: 40px;
+    padding:10px;
+    font-size: 15px;
+    
+}
+.lokasi{
+    width:300px;
+    height: 300px;
+}
+h1{
+    color:white;
+}
+#h11{
+    color:white;
+     font-family: "arial";
+
+}
+h2{
+    color:white;
+  
+}
+p{
+    color:white;
+    font-family: sans-serif;
+    font-size: 20px;
+}
+th{
+    font-family: sans-serif;
+}
